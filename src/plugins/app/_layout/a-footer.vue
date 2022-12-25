@@ -1,0 +1,41 @@
+<template>
+  <ion-footer class="ion-padding-horizontal flex ion-justify-content-between ion-align-items-center">
+    <ion-button fill="clear" class="ion-no-padding">
+      <ion-img :src="HomeIcon" class="ion-icon"/>
+    </ion-button>
+    <ion-button fill="clear" class="ion-no-padding">
+      <ion-img :src="Search" class="ion-icon"/>
+    </ion-button>
+    <ion-button fill="clear" class="ion-no-padding">
+      <ion-img :src="Add" class="ion-icon"/>
+    </ion-button>
+    <ion-button fill="clear" class="ion-no-padding">
+      <ion-img :src="Heart" class="ion-icon"/>
+    </ion-button>
+    <ion-avatar class="user-avatar">
+      <ion-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-img>
+    </ion-avatar>
+  </ion-footer>
+</template>
+
+<script>
+import HomeIcon from '../_layout/_icons/home.svg'
+import Search from '../_layout/_icons/search.svg'
+import Add from '../_layout/_icons/add.svg'
+import Heart from '../_layout/_icons/heart.svg'
+export default {
+  name: "a-footer",
+  data() {
+    return {
+      Heart,
+      HomeIcon,
+      Search,
+      Add
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

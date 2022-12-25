@@ -1,0 +1,50 @@
+@import "mixins"
+
+.container
+  max-width: 650px
+  margin: 0 auto
+
+.button
+  text-transform: none !important
+
+.use-button
+  width: 100% !important
+  &::part(native)
+    border-radius: 12px !important
+
+.ion-icon
+  width: 24px
+  height: 24px
+  color: #0d0d0d
+
+.user-avatar
+  width: 25px
+  height: 25px
+
+.flex
+  display: flex !important
+
+p,
+.ion-icon
+  color: var(--ion-text-color)
+
+.sc-ion-action-sheet-ios
+  color: #000 !important
+
+body.dark
+  @include theme-colors($light-theme: false)
+  .logo
+    @include theme-colors($light-theme: true)
+  .sc-ion-action-sheet-ios
+    color: #ffffff !important
+  .use-button
+    width: 100% !important
+    &::part(native)
+      border-radius: 12px !important
+      background: transparent !important
+      color: #ffffff
+      border: 1px solid #ffffff
+      transition: all 0.3s ease
+      &:hover
+        color: #ee5b5b
+        border-color: #ee5b5b

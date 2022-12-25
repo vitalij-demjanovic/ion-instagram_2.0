@@ -1,0 +1,5 @@
+@mixin theme-colors($light-theme: true)
+  @if $light-theme
+    filter: brightness(0) invert(1)
+  @else
+    filter: none
