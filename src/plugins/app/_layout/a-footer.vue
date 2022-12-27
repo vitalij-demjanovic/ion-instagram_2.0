@@ -19,12 +19,15 @@
 </template>
 
 <script>
+import { IonAvatar, IonImg, IonButton } from "@ionic/vue";
+
 import HomeIcon from '../_layout/_icons/home.svg'
 import Search from '../_layout/_icons/search.svg'
 import Add from '../_layout/_icons/add.svg'
 import Heart from '../_layout/_icons/heart.svg'
 export default {
   name: "a-footer",
+  components: { IonImg, IonButton, IonAvatar },
   data() {
     return {
       Heart,
