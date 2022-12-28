@@ -2,7 +2,16 @@
   <ion-page class="container">
     <a-header/>
     <ion-content>
-      <z-post/>
+      <div v-for="post in TrendingPosts" :key="post.id">
+        <z-post
+            :name="post.user"
+            :avatar="post.avatar"
+            :picture="post.picture"
+            :likes="post.likes"
+            :post="post.content"
+            class="ion-margin-bottom"
+        />
+      </div>
     </ion-content>
     <a-footer/>
   </ion-page>
@@ -13,9 +22,16 @@ import { IonPage, IonContent } from '@ionic/vue'
 import AHeader from "@/plugins/app/_layout/a-header.vue";
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
 import ZPost from "@/plugins/app/_components/z-post/z-post.vue";
+import { TrendingPosts } from "@/app_data/posts";
+
 export default {
   name: 'Home',
-  components: {ZPost, AFooter, AHeader, IonPage, IonContent}
+  components: {ZPost, AFooter, AHeader, IonPage, IonContent},
+  data(){
+    return {
+      TrendingPosts
+    }
+  }
 }
 </script>
 

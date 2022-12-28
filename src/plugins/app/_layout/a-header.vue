@@ -12,7 +12,7 @@
           <ion-button fill="clear" class="ion-no-padding">
             <ion-img :src="Heart" class="ion-icon ion-margin-horizontal"/>
           </ion-button>
-          <ion-button fill="clear" class="ion-no-padding">
+          <ion-button fill="clear" :router-animation="goDirect" class="ion-no-padding" router-link="/direct">
             <ion-img :src="Message" class="ion-icon"/>
           </ion-button>
         </div>
@@ -27,6 +27,7 @@ import Logo from '../_layout/_icons/Logo.svg'
 import Add from '../_layout/_icons/add.svg'
 import Heart from '../_layout/_icons/heart.svg'
 import Message from '../_layout/_icons/message.svg'
+import {mainNext} from "@/plugins/app/_hooks/paging";
 
 export default {
   name: "a-header",
@@ -37,6 +38,11 @@ export default {
       Add,
       Heart,
       Message
+    }
+  },
+  methods: {
+    goDirect() {
+      mainNext()
     }
   }
 }

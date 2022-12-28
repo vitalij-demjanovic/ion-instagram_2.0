@@ -3,7 +3,7 @@
     <div class="post__head flex ion-align-items-center ion-justify-content-between ion-padding-horizontal">
       <div class="post__head-user flex ion-align-items-center">
         <ion-avatar class="user__avatar">
-          <ion-img v-if="AvatarImg" :src="AvatarImg"></ion-img>
+          <ion-img v-if="avatar" :src="avatar"></ion-img>
           <ion-img v-else src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-img>
         </ion-avatar>
         <p>{{name}}</p>
@@ -12,7 +12,7 @@
         <ion-img alt="more" :src="MoreIcon"/>
       </ion-button>
     </div>
-    <ion-img class="post__picture" alt="picture" :src="PostImg"/>
+    <ion-img class="post__picture" alt="picture" :src="picture"/>
     <div class="post__action flex ion-justify-content-between ion-align-items-center ion-padding-horizontal">
       <div class="flex ion-align-items-center">
         <ion-button fill="clear" class="ion-no-padding">
@@ -55,6 +55,28 @@ import SaveCollection from '../../_layout/_icons/save-colllection.svg'
 export default {
   name: "z-post",
   components: { IonImg, IonButton, IonText },
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    avatar: {
+      type: String,
+      required: true
+    },
+    picture: {
+      type: String,
+      required: true
+    },
+    likes: {
+      type: Number,
+      required: true
+    },
+    post: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       AvatarImg,
@@ -64,9 +86,6 @@ export default {
       Comment,
       SaveCollection,
       Message,
-      name: 'Tokio',
-      likes: 250,
-      post: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet luctus pellentesque. Vivamus quis sapien euismod, gravida diam non, porttitor odio. Pellentesque nec lorem leo. Praesent at nibh eget magna commodo tempus congue eget ligula. ',
       show: false
     }
   }
