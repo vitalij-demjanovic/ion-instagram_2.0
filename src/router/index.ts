@@ -3,6 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 import Home from "@/plugins/app@home/home.vue";
 import Direct from "@/plugins/app@direct/direct.vue";
 import Search from "@/plugins/app@search/search.vue";
+import Profile from "@/plugins/app@profile/profile.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/search',
     name: 'Search',
     component: Search
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   }
 ]
 

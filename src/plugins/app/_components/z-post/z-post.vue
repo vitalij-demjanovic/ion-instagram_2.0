@@ -45,7 +45,6 @@
 
 <script>
 import { IonImg, IonButton, IonText } from '@ionic/vue'
-import AvatarImg from '../z-post/_icons/Avatar.png'
 import PostImg from '../z-post/_icons/Post.png'
 import MoreIcon from  '../z-post/_icons/more.svg'
 import Heart from '../../_layout/_icons/heart.svg'
@@ -79,8 +78,6 @@ export default {
   },
   data() {
     return {
-      AvatarImg,
-      PostImg,
       MoreIcon,
       Heart,
       Comment,

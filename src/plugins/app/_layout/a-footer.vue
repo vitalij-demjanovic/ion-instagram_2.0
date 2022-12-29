@@ -24,9 +24,16 @@
     <ion-button fill="clear" class="ion-no-padding">
       <ion-img :src="Heart" class="ion-icon"/>
     </ion-button>
-    <ion-avatar class="user-avatar">
-      <ion-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-img>
-    </ion-avatar>
+    <ion-button
+        fill="clear"
+        class="ion-no-padding"
+        router-link="/profile"
+        :router-animation="mainNext"
+    >
+      <ion-avatar class="user-avatar">
+        <ion-img src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-img>
+      </ion-avatar>
+    </ion-button>
   </ion-footer>
 </template>
 
