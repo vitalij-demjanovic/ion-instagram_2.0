@@ -1,9 +1,21 @@
 <template>
   <ion-footer class="ion-padding-horizontal flex ion-justify-content-between ion-align-items-center">
-    <ion-button fill="clear" class="ion-no-padding">
+    <ion-button
+        fill="clear"
+        class="ion-no-padding"
+        @click="$emit('someEvent')"
+        router-link="/"
+        :router-animation="mainBack"
+    >
+
       <ion-img :src="HomeIcon" class="ion-icon"/>
     </ion-button>
-    <ion-button fill="clear" class="ion-no-padding">
+    <ion-button
+        fill="clear"
+        class="ion-no-padding"
+        router-link="/search"
+        :router-animation="mainNext"
+    >
       <ion-img :src="Search" class="ion-icon"/>
     </ion-button>
     <ion-button fill="clear" class="ion-no-padding">
@@ -20,6 +32,7 @@
 
 <script>
 import { IonAvatar, IonImg, IonButton } from "@ionic/vue";
+import { mainNext, mainBack } from "@/plugins/app/_hooks/paging";
 
 import HomeIcon from '../_layout/_icons/home.svg'
 import Search from '../_layout/_icons/search.svg'
@@ -33,7 +46,9 @@ export default {
       Heart,
       HomeIcon,
       Search,
-      Add
+      Add,
+      mainNext,
+      mainBack
     }
   }
 }
