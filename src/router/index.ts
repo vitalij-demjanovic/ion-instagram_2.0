@@ -4,6 +4,7 @@ import Home from "@/plugins/app@home/home.vue";
 import Direct from "@/plugins/app@direct/direct.vue";
 import Search from "@/plugins/app@search/search.vue";
 import Profile from "@/plugins/app@profile/profile.vue";
+import User from "@/plugins/app@user/user.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -25,7 +26,13 @@ const routes: Array<RouteRecordRaw> = [
     path: '/profile',
     name: 'Profile',
     component: Profile
-  }
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: User
+  },
+
 ]
 
 const router = createRouter({

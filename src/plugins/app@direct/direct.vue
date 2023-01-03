@@ -1,5 +1,5 @@
 <template>
-  <ion-page>
+  <ion-page class="container">
     <ion-toolbar>
       <ion-row class="ion-align-items-center">
         <ion-col size="1">
