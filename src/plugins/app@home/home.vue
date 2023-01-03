@@ -13,7 +13,7 @@
         />
       </div>
     </ion-content>
-    <a-footer/>
+    <a-footer @someEvent="scrollToTop"/>
   </ion-page>
 </template>
 
@@ -30,6 +30,12 @@ export default {
   data(){
     return {
       TrendingPosts
+    }
+  },
+  methods: {
+    scrollToTop() {
+      const pointTop = document.querySelector('ion-content');
+      pointTop.scrollToTop(500);
     }
   }
 }
