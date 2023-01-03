@@ -53,6 +53,16 @@ export default {
       search: '',
     }
   },
+  methods: {
+    detailUser (event) {
+      this.$router.push({
+        name: 'user',
+        params: {
+          username: event
+        }
+      })
+    }
+  },
   computed: {
     searchUser() {
       if (this.search.trim().length > 0) {

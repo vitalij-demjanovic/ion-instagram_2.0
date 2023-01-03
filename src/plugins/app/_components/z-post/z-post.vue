@@ -6,7 +6,9 @@
           <ion-img v-if="avatar" :src="avatar"></ion-img>
           <ion-img v-else src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-img>
         </ion-avatar>
-        <p>{{name}}</p>
+        <ion-button fill="clear" class="ion-no-padding" color="dark" :router-animation="mainNext" router-link="/vitalij">
+          {{name}}
+        </ion-button>
       </div>
       <ion-button fill="clear" class="ion-no-padding">
         <ion-img alt="more" :src="MoreIcon"/>
@@ -45,12 +47,12 @@
 
 <script>
 import { IonImg, IonButton, IonText } from '@ionic/vue'
-import PostImg from '../z-post/_icons/Post.png'
 import MoreIcon from  '../z-post/_icons/more.svg'
 import Heart from '../../_layout/_icons/heart.svg'
 import Comment from '../../_layout/_icons/comment.svg'
 import Message from '../../_layout/_icons/message.svg'
 import SaveCollection from '../../_layout/_icons/save-colllection.svg'
+import {mainNext} from "@/plugins/app/_hooks/paging";
 export default {
   name: "z-post",
   components: { IonImg, IonButton, IonText },
@@ -83,7 +85,8 @@ export default {
       Comment,
       SaveCollection,
       Message,
-      show: false
+      show: false,
+      mainNext
     }
   }
 }

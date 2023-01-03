@@ -41,7 +41,8 @@ export default {
   data() {
     return {
       arrowBackOutline,
-      mainBack
+      mainBack,
+
     }
   }
 }
