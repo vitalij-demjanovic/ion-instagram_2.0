@@ -12,13 +12,18 @@
         </ion-col>
         <ion-col>
           <ion-title >
-            user
+            {{getUserData.name}}
           </ion-title>
         </ion-col>
       </ion-row>
     </ion-toolbar>
     <ion-content>
-      <z-user-property following="55" followers="222" posts="222"/>
+      <z-user-property
+          :avatar="getUserData.avatar"
+          posts="22"
+          :followers="getUserData.followers"
+          :following="getUserData.following"
+      />
       <a-user-buttons/>
     </ion-content>
   </ion-page>
@@ -27,6 +32,7 @@
 <script>
 import { IonPage, IonToolbar, IonRow, IonCol, IonButton, IonIcon, IonTitle, IonContent } from "@ionic/vue";
 import { arrowBackOutline } from 'ionicons/icons'
+import { Users } from "@/app_data/users";
 
 import {mainBack} from "@/plugins/app/_hooks/paging";
 import ZUserProperty from "@/plugins/app@user/_components/z-user-property.vue";
@@ -40,9 +46,15 @@ export default {
     ZUserProperty, IonPage, IonToolbar, IonRow, IonCol, IonButton, IonIcon, IonTitle, IonContent },
   data() {
     return {
+      Users,
       arrowBackOutline,
       mainBack,
-
+      nameDetail: this.$route.params.username,
+    }
+  },
+  computed: {
+    getUserData() {
+      return this.Users.find((user) => user.name ===  this.nameDetail)
     }
   }
 }

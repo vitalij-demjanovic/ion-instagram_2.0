@@ -22,7 +22,7 @@
       </div>
       <div class="search-result ion-padding-horizontal" v-if="arrow">
         <div v-for="user in searchUser" :key="user.id">
-          <z-search-user :avatar="user.avatar" :user-name="user.name" v-if="search.length > 0"/>
+          <z-search-user @detail="detailUser(user.name)" :avatar="user.avatar" :user-name="user.name" v-if="search.length > 0"/>
         </div>
       </div>
     </ion-content>
@@ -56,7 +56,7 @@ export default {
   methods: {
     detailUser (event) {
       this.$router.push({
-        name: 'user',
+        name: 'User',
         params: {
           username: event
         }

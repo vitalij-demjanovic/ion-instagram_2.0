@@ -6,7 +6,7 @@
           <ion-img v-if="avatar" :src="avatar"></ion-img>
           <ion-img v-else src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-img>
         </ion-avatar>
-        <ion-button fill="clear" class="ion-no-padding" color="dark" :router-animation="mainNext" router-link="/vitalij">
+        <ion-button @click="detailUser(name)" fill="clear" class="ion-no-padding" color="dark" :router-animation="mainNext" router-link="/:username">
           {{name}}
         </ion-button>
       </div>
@@ -88,7 +88,17 @@ export default {
       show: false,
       mainNext
     }
-  }
+  },
+  methods: {
+    detailUser(event) {
+      this.$router.push({
+        name: 'User',
+        params: {
+          username: event
+        }
+      })
+    }
+  },
 }
 </script>
 
