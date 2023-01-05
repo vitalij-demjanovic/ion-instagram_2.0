@@ -21,13 +21,39 @@
           :following="user.following"
       />
       <ion-segment value="default">
-        <ion-segment-button value="default">
+        <ion-segment-button value="default" @click="currentPosts = 'my'">
           <ion-icon :src="imageOutline"></ion-icon>
         </ion-segment-button>
-        <ion-segment-button value="segment">
+        <ion-segment-button value="segment" @click="currentPosts = 'tags'">
           <ion-icon :src="pricetagOutline"></ion-icon>
         </ion-segment-button>
       </ion-segment>
+      <div v-if="currentPosts === 'my'">
+        <div v-for="post in ProfilePosts" :key="post.id" class="ion-margin-top">
+          <z-post
+              :name="user.name"
+              :avatar="user.avatar"
+              :picture="post.picture"
+              :likes="post.likes"
+              :post="post.content"
+              class="ion-margin-bottom"
+          />
+        </div>
+      </div>
+      <div v-if="currentPosts === 'tags'">
+        <div v-for="post in TagsPosts" :key="post.id" class="ion-margin-top">
+          <z-tag-post
+              :second-avatar="post.secondAvatar"
+              :second-name="post.secondName"
+              :name="user.name"
+              :avatar="user.avatar"
+              :picture="post.picture"
+              :likes="post.likes"
+              :post="post.content"
+              class="ion-margin-bottom"
+          />
+        </div>
+      </div>
     </ion-content>
     <a-footer/>
   </ion-page>
@@ -39,12 +65,20 @@ import { add, menu, imageOutline, pricetagOutline } from 'ionicons/icons'
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
 import { LoginUser } from "@/app_data/login-user";
 import AProfileUser from "@/plugins/app@profile/_components/z-user-content.vue";
+import ZPost from "@/plugins/app/_components/z-post/z-post.vue";
+import { ProfilePosts, TagsPosts } from "@/app_data/profile-data";
+import ZTagPost from "@/plugins/app/_components/z-post/z-tag-post.vue";
 
 export default {
   name: "Profile",
-  components: { AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton },
+  components: {
+    ZTagPost,
+    ZPost, AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton },
   data () {
     return {
+      currentPosts: 'my',
+      ProfilePosts,
+      TagsPosts,
       user: LoginUser,
       add,
       menu,
