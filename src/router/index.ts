@@ -5,6 +5,7 @@ import Direct from "@/plugins/app@direct/direct.vue";
 import Search from "@/plugins/app@search/search.vue";
 import Profile from "@/plugins/app@profile/profile.vue";
 import User from "@/plugins/app@user/user.vue";
+import Chat from "@/plugins/app@chat/chat.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/:username',
     name: 'User',
     component: User
+  },
+  {
+    path: '/chat/:username',
+    name: 'Chat',
+    component: Chat
   },
 
 ]

@@ -19,7 +19,7 @@
     </ion-toolbar>
     <ion-content class="ion-padding-horizontal">
       <div v-for="message in Messages" :key="message.id">
-        <z-message :message-body="message.messageBody" :name="message.user" :avatar="message.avatar"/>
+        <z-message :message-body="message.messageBody" :name="message.user" :avatar="message.avatar" @messageOpen="detailMessage(message.user)"/>
       </div>
     </ion-content>
   </ion-page>
@@ -44,7 +44,15 @@ export default {
   methods: {
    backStep() {
      mainBack()
-   }
+   },
+    detailMessage (event) {
+      this.$router.push({
+        name: 'Chat',
+        params: {
+          username: event
+        }
+      })
+    }
   }
 }
 </script>
