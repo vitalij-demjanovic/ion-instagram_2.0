@@ -17,20 +17,28 @@
         </ion-col>
       </ion-row>
     </ion-toolbar>
+    <ion-content class="ion-padding-horizontal">
+      <div v-for="message in Messages" :key="message.id">
+        <z-message :message-body="message.messageBody" :name="message.user" :avatar="message.avatar"/>
+      </div>
+    </ion-content>
   </ion-page>
 </template>
 
 <script>
-import { IonPage, IonToolbar, IonIcon, IonTitle, IonRow, IonCol, IonButton } from "@ionic/vue";
+import { IonPage, IonToolbar, IonIcon, IonTitle, IonRow, IonCol, IonButton, IonContent } from "@ionic/vue";
 import { arrowBackOutline } from 'ionicons/icons'
 import {mainBack} from "@/plugins/app/_hooks/paging";
+import ZMessage from "@/plugins/app@direct/_components/z-message.vue";
+import { Messages } from "@/app_data/messages";
 
 export default {
   name: "Direct",
-  components: { IonPage, IonToolbar, IonIcon, IonTitle, IonRow, IonCol, IonButton },
+  components: {ZMessage, IonPage, IonToolbar, IonIcon, IonTitle, IonRow, IonCol, IonButton, IonContent },
   data() {
     return {
-      arrowBackOutline
+      arrowBackOutline,
+      Messages
     }
   },
   methods: {
