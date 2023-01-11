@@ -10,7 +10,7 @@
           {{name}}
         </ion-button>
       </div>
-      <ion-button fill="clear" class="ion-no-padding">
+      <ion-button fill="clear" class="ion-no-padding" @click="presentActionSheet">
         <ion-img alt="more" :src="MoreIcon"/>
       </ion-button>
     </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { IonImg, IonButton, IonText } from '@ionic/vue'
+import { IonImg, IonButton, IonText, actionSheetController} from '@ionic/vue'
 import MoreIcon from  '../z-post/_icons/more.svg'
 import Heart from '../../_layout/_icons/heart.svg'
 import Comment from '../../_layout/_icons/comment.svg'
@@ -97,6 +97,18 @@ export default {
           username: event
         }
       })
+    },
+    async presentActionSheet () {
+      const actionSheet = await actionSheetController.create({
+        cssClass: 'my-custom-class',
+        buttons: [
+          {
+            text: 'Unfollow',
+          }
+        ],
+      });
+
+      await actionSheet.present();
     }
   },
 }
@@ -134,4 +146,20 @@ export default {
   white-space: normal
   overflow: visible
   width: 100%
+
+.action-sheet-group
+  border-radius: 10px 10px 0 0
+  border: solid #ffffff
+  border-width: 1px 1px 0 1px
+
+.action-sheet-button-inner
+  display: flex !important
+  align-items: center !important
+  justify-content: space-between !important
+
+.action-sheet-button
+  transition: all 0.3s ease
+  &:hover
+    background: rgba(0,0,0, 0.3) !important
+    color: #ffffff !important
 </style>

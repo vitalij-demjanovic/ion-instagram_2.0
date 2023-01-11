@@ -60,14 +60,26 @@
 </template>
 
 <script>
-import { IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton } from "@ionic/vue";
-import { add, menu, imageOutline, pricetagOutline } from 'ionicons/icons'
+import {
+  IonPage,
+  IonToolbar,
+  IonRow,
+  IonCol,
+  IonTitle,
+  IonIcon,
+  IonContent,
+  IonSegment,
+  IonSegmentButton,
+  actionSheetController
+} from "@ionic/vue";
+import { add, menu, imageOutline, pricetagOutline, cog, logOut } from 'ionicons/icons'
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
 import { LoginUser } from "@/app_data/login-user";
 import AProfileUser from "@/plugins/app@profile/_components/z-user-content.vue";
 import ZPost from "@/plugins/app/_components/z-post/z-post.vue";
 import { ProfilePosts, TagsPosts } from "@/app_data/profile-data";
 import ZTagPost from "@/plugins/app/_components/z-post/z-tag-post.vue";
+import router from "@/router";
 
 export default {
   name: "Profile",
@@ -83,9 +95,34 @@ export default {
       add,
       menu,
       imageOutline,
-      pricetagOutline
+      pricetagOutline,
     }
   },
+  methods: {
+    async presentActionSheet () {
+      const actionSheet = await actionSheetController.create({
+        cssClass: 'my-custom-class',
+        buttons: [
+          {
+            text: 'Setting',
+            icon: cog,
+            handler: () => {
+              router.push('/setting')
+            }
+          },
+          {
+            text: 'Log Out',
+            icon: logOut,
+            handler: () => {
+              console.log('Log Out')
+            }
+          }
+        ],
+      });
+
+      await actionSheet.present();
+    }
+  }
 }
 </script>
 
