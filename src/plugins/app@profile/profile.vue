@@ -1,15 +1,29 @@
 <template>
-  <ion-page class="container">
+  <ion-menu content-id="content-menu">
+    <ion-content class="ion-padding">
+      <div class="menu__items">
+        <ion-button fill="clear" class="ion-no-padding menu__btn ion-margin-bottom">
+          <ion-text class="ion-margin-end">Seeting</ion-text>
+          <ion-icon :src="cog"/>
+        </ion-button>
+        <ion-button fill="clear" class="ion-no-padding menu__btn">
+          <ion-text class="ion-margin-end">Log Out</ion-text>
+          <ion-icon :src="logOut"/>
+        </ion-button>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-page class="container" id="content-menu">
     <ion-toolbar>
-      <ion-row class="ion-padding-horizontal">
+      <ion-row class="ion-padding-horizontal ion-align-items-center">
         <ion-col>
           <ion-title color="dark ion-no-padding" class="ion-text-start">
             {{user.name}}
           </ion-title>
         </ion-col>
-        <ion-col class="ion-text-end">
+        <ion-col class="ion-text-end flex ion-align-items-center ion-justify-content-end">
           <ion-icon class="ion-icon ion-margin-horizontal" :src="add"></ion-icon>
-          <ion-icon @click="presentActionSheet" class="ion-icon" :src="menu"></ion-icon>
+          <ion-menu-button></ion-menu-button>
         </ion-col>
       </ion-row>
     </ion-toolbar>
@@ -70,7 +84,8 @@ import {
   IonContent,
   IonSegment,
   IonSegmentButton,
-  actionSheetController
+  IonMenu,
+  IonMenuButton
 } from "@ionic/vue";
 import { add, menu, imageOutline, pricetagOutline, cog, logOut } from 'ionicons/icons'
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
@@ -79,13 +94,12 @@ import AProfileUser from "@/plugins/app@profile/_components/z-user-content.vue";
 import ZPost from "@/plugins/app/_components/z-post/z-post.vue";
 import { ProfilePosts, TagsPosts } from "@/app_data/profile-data";
 import ZTagPost from "@/plugins/app/_components/z-post/z-tag-post.vue";
-import router from "@/router";
 
 export default {
   name: "Profile",
   components: {
     ZTagPost,
-    ZPost, AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton },
+    ZPost, AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton, IonMenu, IonMenuButton },
   data () {
     return {
       currentPosts: 'my',
@@ -94,39 +108,26 @@ export default {
       user: LoginUser,
       add,
       menu,
+      cog,
+      logOut,
       imageOutline,
       pricetagOutline,
     }
   },
-  methods: {
-    async presentActionSheet () {
-      const actionSheet = await actionSheetController.create({
-        cssClass: 'my-custom-class',
-        buttons: [
-          {
-            text: 'Setting',
-            icon: cog,
-            handler: () => {
-              router.push('/setting')
-            }
-          },
-          {
-            text: 'Log Out',
-            icon: logOut,
-            handler: () => {
-              console.log('Log Out')
-            }
-          }
-        ],
-      });
-
-      await actionSheet.present();
-    }
-  }
 }
 </script>
 
 <style lang="sass">
+
+.menu__btn
+  color: #1a1a1a
+  font-size: 20px
+
+.menu__items
+  display: flex
+  flex-direction: column
+  width: 100%
+
 ion-segment-button::part(indicator-background)
   background: #ee5b5b
 /* Material Design styles */
