@@ -10,7 +10,7 @@
           {{name}}
         </ion-button>
       </div>
-      <ion-button fill="clear" class="ion-no-padding" @click="presentActionSheet">
+      <ion-button fill="clear" class="ion-no-padding" @click="presentAlert">
         <ion-img alt="more" :src="MoreIcon"/>
       </ion-button>
     </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { IonImg, IonButton, IonText, actionSheetController} from '@ionic/vue'
+import { IonImg, IonButton, IonText, alertController} from '@ionic/vue'
 import MoreIcon from  '../z-post/_icons/more.svg'
 import Heart from '../../_layout/_icons/heart.svg'
 import Comment from '../../_layout/_icons/comment.svg'
@@ -98,17 +98,20 @@ export default {
         }
       })
     },
-    async presentActionSheet () {
-      const actionSheet = await actionSheetController.create({
-        cssClass: 'my-custom-class',
+    async presentAlert () {
+      const alert = await alertController.create({
+        header: this.name,
         buttons: [
           {
+            text: 'Follow',
+          },
+          {
             text: 'Unfollow',
-          }
-        ],
+          },
+        ]
       });
 
-      await actionSheet.present();
+      await alert.present();
     }
   },
 }
@@ -162,4 +165,17 @@ export default {
   &:hover
     background: rgba(0,0,0, 0.3) !important
     color: #ffffff !important
+
+
+.alert-button-group
+  justify-content: center !important
+
+.alert-head
+  text-align: center !important
+
+.alert-button
+  &:first-child
+    color: #109a49
+  &:last-child
+    color: #f14f4f
 </style>
