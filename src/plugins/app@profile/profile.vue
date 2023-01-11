@@ -1,19 +1,19 @@
 <template>
-  <ion-menu content-id="content-menu">
-    <ion-content class="ion-padding">
-      <div class="menu__items">
-        <ion-button fill="clear" class="ion-no-padding menu__btn ion-margin-bottom">
-          <ion-text class="ion-margin-end">Seeting</ion-text>
-          <ion-icon :src="cog"/>
-        </ion-button>
-        <ion-button fill="clear" class="ion-no-padding menu__btn">
-          <ion-text class="ion-margin-end">Log Out</ion-text>
-          <ion-icon :src="logOut"/>
-        </ion-button>
-      </div>
-    </ion-content>
-  </ion-menu>
-  <ion-page class="container" id="content-menu">
+  <ion-page class="container">
+    <ion-menu content-id="main-content">
+      <ion-content class="ion-padding">
+        <div class="menu__items">
+          <ion-button fill="clear" class="ion-no-padding menu__btn ion-margin-bottom">
+            <ion-text class="ion-margin-end">Seeting</ion-text>
+            <ion-icon :src="cog"/>
+          </ion-button>
+          <ion-button fill="clear" class="ion-no-padding menu__btn">
+            <ion-text class="ion-margin-end">Log Out</ion-text>
+            <ion-icon :src="logOut"/>
+          </ion-button>
+        </div>
+      </ion-content>
+    </ion-menu>
     <ion-toolbar>
       <ion-row class="ion-padding-horizontal ion-align-items-center">
         <ion-col>
