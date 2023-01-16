@@ -33,6 +33,7 @@
           :posts="user.posts"
           :followers="user.followers"
           :following="user.following"
+          @list="presentActionSheet"
       />
       <ion-segment value="default">
         <ion-segment-button value="default" @click="currentPosts = 'my'">
@@ -85,15 +86,18 @@ import {
   IonSegment,
   IonSegmentButton,
   IonMenu,
-  IonMenuButton
+  IonMenuButton,
+  actionSheetController
 } from "@ionic/vue";
-import { add, menu, imageOutline, pricetagOutline, cog, logOut } from 'ionicons/icons'
+import { add, menu, imageOutline, pricetagOutline, cog, logOut, caretForwardCircle, heart, share, trash } from 'ionicons/icons'
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
 import { LoginUser } from "@/app_data/login-user";
 import AProfileUser from "@/plugins/app@profile/_components/z-user-content.vue";
 import ZPost from "@/plugins/app/_components/z-post/z-post.vue";
 import { ProfilePosts, TagsPosts } from "@/app_data/profile-data";
 import ZTagPost from "@/plugins/app/_components/z-post/z-tag-post.vue";
+import { Users } from "@/app_data/users";
+import ZSearchUser from "@/plugins/app@search/_conmponents/z-search-user.vue";
 
 export default {
   name: "Profile",
@@ -112,8 +116,40 @@ export default {
       logOut,
       imageOutline,
       pricetagOutline,
+      usFollower: Users.map((user) =>
+          ({
+            text: user.name,
+            icon: user.avatar,
+            handler: () => {
+              this.detailUser(user.name)
+            },
+          })),
+      Users
     }
   },
+  methods: {
+    async presentActionSheet() {
+      const actionSheet = await actionSheetController.create({
+        header: 'Followers',
+        cssClass: 'my-custom-class',
+        buttons: [
+            ...this.usFollower
+        ],
+      });
+      await actionSheet.present();
+    },
+    detailUser (event) {
+      this.$router.push({
+        name: 'User',
+        params: {
+          username: event
+        }
+      })
+    }
+  },
+  mounted() {
+    console.log(this.usFollower)
+  }
 }
 </script>
 

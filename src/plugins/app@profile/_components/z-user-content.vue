@@ -12,7 +12,7 @@
           <p class="rate-item_number">{{posts}}</p>
           <p class="ion-no-margin">Posts</p>
         </ion-text>
-        <ion-text class="user-rate-item" id="open-modal" expand="block">
+        <ion-text class="user-rate-item" id="open-modal" expand="block" @click="$emit('list')">
           <p class="rate-item_number">{{followers}}</p>
           <p class="ion-no-margin">Followers</p>
         </ion-text>
