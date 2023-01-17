@@ -2,7 +2,7 @@
   <div class="post">
     <div class="post__head flex ion-align-items-center ion-justify-content-between ion-padding-horizontal">
       <div class="post__head-user flex ion-align-items-center">
-        <ion-avatar class="user__avatar">
+        <ion-avatar class="user__avatar" @click="$router.push('/stories')">
           <ion-img v-if="avatar" :src="avatar"></ion-img>
           <ion-img v-else src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-img>
         </ion-avatar>

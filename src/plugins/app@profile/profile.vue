@@ -119,7 +119,6 @@ export default {
       usFollower: Users.map((user) =>
           ({
             text: user.name,
-            icon: user.avatar,
             handler: () => {
               this.detailUser(user.name)
             },
