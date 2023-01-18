@@ -1,6 +1,8 @@
 <template >
   <div class="story-image ion-padding-vertical" :style="backgroundStyles(storyItem)">
-    <ion-progress-bar :value="progress"></ion-progress-bar>
+    <div class="quizz-progress ion-text-center">
+      <ion-progress-bar :value="progress"></ion-progress-bar>
+    </div>
   </div>
 </template >
 
@@ -30,6 +32,7 @@ export default {
     setInterval(() => {
       this.progress += 0.01;
     }, 100);
+    console.log('další')
   }
 }
 </script >
@@ -39,5 +42,14 @@ export default {
   height: 100vh
   background-repeat: no-repeat
   background-size: cover
+
+.quizz-progress
+  ion-progress-bar
+    width: 90%
+    margin: 0 auto
+    border-radius: 10px
+    --buffer-background: #9cb4e0
+    --progress-background: #b07676
+
 
 </style >
