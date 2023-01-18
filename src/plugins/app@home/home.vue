@@ -2,6 +2,7 @@
   <ion-page class="container">
     <a-header/>
     <ion-content>
+      <z-stories-list/>
       <div v-for="post in TrendingPosts" :key="post.id">
         <z-post
             :name="post.user"
@@ -23,10 +24,11 @@ import AHeader from "@/plugins/app/_layout/a-header.vue";
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
 import ZPost from "@/plugins/app/_components/z-post/z-post.vue";
 import { TrendingPosts } from "@/app_data/posts";
+import ZStoriesList from "@/plugins/app/_components/z-stories-list.vue";
 
 export default {
   name: 'Home',
-  components: {ZPost, AFooter, AHeader, IonPage, IonContent},
+  components: {ZStoriesList, ZPost, AFooter, AHeader, IonPage, IonContent},
   data(){
     return {
       TrendingPosts
