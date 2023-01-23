@@ -1,7 +1,7 @@
 <template >
   <div class="story-image ion-padding-vertical" :style="backgroundStyles(storyItem)">
     <div class="quizz-progress ion-text-center">
-      <ion-progress-bar :value="progress"></ion-progress-bar>
+      <ion-progress-bar :value="progressValue"></ion-progress-bar>
     </div>
   </div>
 </template >
@@ -12,13 +12,14 @@ import { IonProgressBar } from '@ionic/vue';
 export default {
   name: "story",
   components: { IonProgressBar },
+  props: {
+    storyItem: String,
+    progressValue: Number
+  },
   data() {
     return {
-      progress: 0
+      progress: this.progressValue
     }
-  },
-  props: {
-    storyItem: String
   },
   methods: {
     backgroundStyles(image) {
@@ -27,12 +28,6 @@ export default {
         'background-image': `url(${image})`,
       }
     }
-  },
-  mounted() {
-    setInterval(() => {
-      this.progress += 0.01;
-    }, 100);
-    console.log('další')
   }
 }
 </script >
