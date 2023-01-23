@@ -6,7 +6,7 @@
           @slideChange="onSlideChange"
       >
         <swiper-slide v-for="stor in TrendingPosts" :key="stor.id">
-          <story :story-item="stor.picture" :progressValue="slideValue" @click="swiper.value.slideNext(1000)"/>
+          <story :story-item="stor.picture" :progressValue="slideValue"/>
         </swiper-slide>
       </swiper>
     </ion-content>
@@ -36,27 +36,24 @@ export default {
     getRef (swiperInstance) {
       this.swiper = swiperInstance
     },
-    progressCall() {
-      this.slideValue = 0
-      setInterval(() => {
+    onSlideChange() {
+      this.progressSlide()
+    },
+    progressSlide() {
+      const timer = setInterval(() => {
         this.slideValue += 0.01;
 
         // Reset the progress bar when it reaches 100%
         // to continuously show the demo
         if (this.slideValue > 1) {
+          this.slideValue = 0
           this.swiper.slideNext()
-          setTimeout(() => {
-            this.slideValue = 0;
-          }, 1000);
         }
       }, 50);
-    },
-    onSlideChange() {
-      this.progressCall()
     }
   },
   mounted() {
-    this.progressCall()
+    this.progressSlide()
   }
 }
 </script >

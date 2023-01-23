@@ -28,7 +28,7 @@ export default {
         'background-image': `url(${image})`,
       }
     }
-  }
+  },
 }
 </script >
 
