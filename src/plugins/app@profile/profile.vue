@@ -1,19 +1,6 @@
 <template>
   <ion-page class="container">
-    <ion-menu content-id="main-content">
-      <ion-content class="ion-padding">
-        <div class="menu__items">
-          <ion-button fill="clear" class="ion-no-padding menu__btn ion-margin-bottom">
-            <ion-text class="ion-margin-end">Seeting</ion-text>
-            <ion-icon :src="cog"/>
-          </ion-button>
-          <ion-button fill="clear" class="ion-no-padding menu__btn">
-            <ion-text class="ion-margin-end">Log Out</ion-text>
-            <ion-icon :src="logOut"/>
-          </ion-button>
-        </div>
-      </ion-content>
-    </ion-menu>
+    <a-menu/>
     <ion-toolbar>
       <ion-row class="ion-padding-horizontal ion-align-items-center">
         <ion-col>
@@ -23,7 +10,7 @@
         </ion-col>
         <ion-col class="ion-text-end flex ion-align-items-center ion-justify-content-end">
           <ion-icon class="ion-icon ion-margin-horizontal" :src="add"></ion-icon>
-          <ion-menu-button></ion-menu-button>
+          <ion-icon class="ion-icon ion-margin-horizontal" :src="menuOutline" @click="openMenu"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-toolbar>
@@ -85,11 +72,10 @@ import {
   IonContent,
   IonSegment,
   IonSegmentButton,
-  IonMenu,
   IonMenuButton,
   actionSheetController
 } from "@ionic/vue";
-import { add, menu, imageOutline, pricetagOutline, cog, logOut, caretForwardCircle, heart, share, trash } from 'ionicons/icons'
+import { add, menuOutline, imageOutline, pricetagOutline, cog, logOut, caretForwardCircle, heart, share, trash } from 'ionicons/icons'
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
 import { LoginUser } from "@/app_data/login-user";
 import AProfileUser from "@/plugins/app@profile/_components/z-user-content.vue";
@@ -97,13 +83,12 @@ import ZPost from "@/plugins/app/_components/z-post/z-post.vue";
 import { ProfilePosts, TagsPosts } from "@/app_data/profile-data";
 import ZTagPost from "@/plugins/app/_components/z-post/z-tag-post.vue";
 import { Users } from "@/app_data/users";
-import ZSearchUser from "@/plugins/app@search/_conmponents/z-search-user.vue";
+import {menuController} from "@ionic/vue";
+import AMenu from "@/plugins/app@profile/_components/a-menu.vue";
 
 export default {
   name: "Profile",
-  components: {
-    ZTagPost,
-    ZPost, AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton, IonMenu, IonMenuButton },
+  components: { AMenu, ZTagPost, ZPost, AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton },
   data () {
     return {
       currentPosts: 'my',
@@ -111,7 +96,7 @@ export default {
       TagsPosts,
       user: LoginUser,
       add,
-      menu,
+      menuOutline,
       cog,
       logOut,
       imageOutline,
@@ -136,6 +121,10 @@ export default {
         ],
       });
       await actionSheet.present();
+    },
+    openMenu(){
+      menuController.open("app-menu")
+      console.log('google')
     },
     detailUser (event) {
       this.$router.push({
