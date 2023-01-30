@@ -19,7 +19,7 @@
       <ion-icon :src="Search" class="ion-icon"></ion-icon>
     </ion-button>
     <ion-button fill="clear" class="ion-no-padding">
-      <ion-img :src="Add" class="ion-icon"/>
+      <ion-icon :src="Add" class="ion-icon"></ion-icon>
     </ion-button>
     <ion-button fill="clear" class="ion-no-padding">
       <ion-icon :src="Heart" class="ion-icon"></ion-icon>

@@ -3,7 +3,7 @@
     <ion-content>
       <swiper
           @swiper="getRef"
-          @slideChange="progressionSlider"
+          @slideChange="sliderProgression"
       >
         <swiper-slide v-for="stor in TrendingPosts" :key="stor.id">
           <story :story-item="stor.picture" :progressValue="slideValue"/>
@@ -29,14 +29,39 @@ export default {
     return {
       TrendingPosts,
       slideValue: 0,
+      countSlide: 0,
       swiper: ref(null)
     }
   },
   methods: {
     getRef (swiperInstance) {
       this.swiper = swiperInstance
+    },
+    addUp() {
+      this.countSlide ++
+      if (this.countSlide > this.TrendingPosts.length) {
+        this.$router.push('/')
+      }
+    },
+    addProgress() {
+      this.slideValue += 0.01;
+    },
+    sliderProgression() {
+      this.slideValue = 0
+      this.addProgress()
+      setTimeout(() => {
+        this.swiper.slideNext(100)
+        if ((this.swiper.realIndex + 1) === this.TrendingPosts.length) {
+          this.$router.push('/')
+        }
+      }, 10100)
     }
-
+  },
+  mounted() {
+    setInterval(this.addProgress, 100)
+    setTimeout(() => {
+      this.swiper.slideNext(100)
+    }, 10100)
   }
 }
 </script >
