@@ -1,5 +1,5 @@
 <template >
-  <ion-page class="container">
+  <ion-page class="container" >
     <ion-content>
       <swiper
           @swiper="getRef"
@@ -24,6 +24,13 @@ import 'swiper/swiper-bundle.min.css'
 
 export default {
   name: "stories",
+  ionViewWillEnter() {
+    this.slideValue = 0
+    setInterval(this.addProgress, 100)
+    setTimeout(() => {
+      this.swiper.slideNext(100)
+    }, 10100)
+  },
   components: { Story, IonPage, IonContent, Swiper, SwiperSlide },
   data() {
     return {
@@ -56,12 +63,6 @@ export default {
         }
       }, 10100)
     }
-  },
-  mounted() {
-    setInterval(this.addProgress, 100)
-    setTimeout(() => {
-      this.swiper.slideNext(100)
-    }, 10100)
   }
 }
 </script >
