@@ -1,6 +1,5 @@
 <template>
   <ion-page class="container">
-    <a-menu/>
     <ion-toolbar>
       <ion-row class="ion-padding-horizontal ion-align-items-center">
         <ion-col>
@@ -72,10 +71,9 @@ import {
   IonContent,
   IonSegment,
   IonSegmentButton,
-  IonMenuButton,
   actionSheetController
 } from "@ionic/vue";
-import { add, menuOutline, imageOutline, pricetagOutline, cog, logOut, caretForwardCircle, heart, share, trash } from 'ionicons/icons'
+import { add, menuOutline, imageOutline, pricetagOutline, cog, logOut} from 'ionicons/icons'
 import AFooter from "@/plugins/app/_layout/a-footer.vue";
 import { LoginUser } from "@/app_data/login-user";
 import AProfileUser from "@/plugins/app@profile/_components/z-user-content.vue";
@@ -84,11 +82,10 @@ import { ProfilePosts, TagsPosts } from "@/app_data/profile-data";
 import ZTagPost from "@/plugins/app/_components/z-post/z-tag-post.vue";
 import { Users } from "@/app_data/users";
 import {menuController} from "@ionic/vue";
-import AMenu from "@/plugins/app@profile/_components/a-menu.vue";
 
 export default {
   name: "Profile",
-  components: { AMenu, ZTagPost, ZPost, AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton },
+  components: {ZTagPost, ZPost, AProfileUser, AFooter, IonPage, IonToolbar, IonRow, IonCol, IonTitle, IonIcon, IonContent, IonSegment, IonSegmentButton },
   data () {
     return {
       currentPosts: 'my',
@@ -124,7 +121,6 @@ export default {
     },
     openMenu(){
       menuController.open("app-menu")
-      console.log('google')
     },
     detailUser (event) {
       this.$router.push({
